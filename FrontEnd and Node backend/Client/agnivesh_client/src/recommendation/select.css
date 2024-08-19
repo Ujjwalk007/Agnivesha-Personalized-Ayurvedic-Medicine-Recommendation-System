@@ -1,0 +1,74 @@
+.search{
+    background-color: white;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+
+    margin-left: 25%;
+
+    padding: 1vh;
+    border-radius: 2vh;
+}
+
+.search input{
+    color: grey;
+    width: 60vh;
+    border: none;
+    outline: none;
+
+}
+
+.search button{
+    border-radius: 100%;
+    background-color: green;
+}
+
+
+.box{
+
+    
+    margin-top: 10vh;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding:3vh;
+
+    height: 60vh;
+    background-color: white;
+    border-radius: 5vh;
+}
+
+.Dnames{
+    display: flex;
+    justify-content: space-around;
+    
+    height: 60%;
+    
+
+    margin-top: 5vh;
+
+}
+
+
+.recommendation-list {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-right: 50vh;
+    margin-top: 5vh;
+    z-index: 1;
+  }
+  
+  .recommendation-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .recommendation-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .search {
+    position: relative;
+  }
+  

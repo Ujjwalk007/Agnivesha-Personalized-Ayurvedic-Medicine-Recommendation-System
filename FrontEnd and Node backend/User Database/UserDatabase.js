@@ -56,10 +56,10 @@ app.post('/verify',async (req,res)=>{
         if(await bcrypt.compare(password,valid.password))
         res.status(200).json(valid);
         else
-        res.status(400).json({"status":"fail"});
+        res.status(200).json({"status":"fail"});
     }
     else
-    res.status(400).json({"status":"fail"});
+    res.status(200).json({"status":"fail"});
 
 
 })

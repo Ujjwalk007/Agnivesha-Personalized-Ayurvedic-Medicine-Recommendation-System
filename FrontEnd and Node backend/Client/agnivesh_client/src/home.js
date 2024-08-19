@@ -1,14 +1,64 @@
 import './home.css'
+import {useState,useContext, useEffect} from 'react'
+import { LoginHandler } from './AccountSetup/Loginhandler';
+import usercontext from './context/usercontext';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Home()
 {
+    const navigate = useNavigate();
+
+    const cont = useContext(usercontext);
+    const [inputuser,setinputuser] = useState('');
+    const [inputpass,setinputpass] = useState('');
+    const [displayalert,setdisplayalert] = useState(false);
+
+    function userinputhandler(e)
+    {
+        setinputuser(e.target.value);
+    }
+
+    function passinputuser(e)
+    {
+        setinputpass(e.target.value);
+    }
+
+    async function loginhandler()
+    {
+        const data = await LoginHandler(inputuser,inputpass);
+
+        if(data.status !== 'fail')
+        {
+            cont.setUserdata(data);
+            navigate('/Dselect');
+            
+        }
+        else
+        {
+            setdisplayalert(true); 
+        }
+    }
+    useEffect(()=>{
+        setTimeout(()=>{
+            setdisplayalert(false);
+        },3000)
+    },[displayalert])
+
+    
 
 
 
 
-    return (<div style={{display:'flex'}}>
+    return (
+        <>
+        {displayalert && (<div className="alert alert-danger" role="alert">
+        Invalid Credentials
+        </div>)}
+        <div style={{display:'flex'}}>
+
+        
 
         <div style={{height:'100%',display:'flex',justifyContent:'center', alignItems: 'center'}}>
             
@@ -25,14 +75,18 @@ function Home()
                     <input tyep='text' 
                     className='inputfield'
                     placeholder='e.g.: elonmusk@facebook.com'
+                    value={inputuser}
+                    onChange={userinputhandler}
                     >
                     </input>
 
                     <br/><br/>
                     <label style={{fontSize:'2vh',fontWeight:'bold'}}>Password</label><br/>
-                    <input tyep='text' 
+                    <input type='password' 
                     className='inputfield'
                     placeholder='e.g.: Aezakmi'
+                    value={inputpass}
+                    onChange={passinputuser}
                     >
                     </input>
 
@@ -50,6 +104,7 @@ function Home()
                         fontSize:'2vh'
                     }}
                     className="btn btn-primary"
+                    onClick={()=>{ loginhandler() }}
                     >
                         Login
                     </button>
@@ -95,7 +150,8 @@ function Home()
 
 
 
-    </div>)
+    </div>
+    </>)
 }
 
 export default Home;
