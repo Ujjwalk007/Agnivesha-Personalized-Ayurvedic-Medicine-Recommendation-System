@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import usercontext from '../context/usercontext';
 import {useNavigate} from 'react-router-dom';
 import './select.css';
@@ -12,16 +12,22 @@ const diseases = [
 
 function DiseaseSelection() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredDiseases,setfilteredDiseases] = useState([]);
   const cont = useContext(usercontext);
   const navigate = useNavigate();
   
   
-  const filteredDiseases = diseases.filter(disease =>
-    disease.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    setfilteredDiseases(
+      diseases.filter(disease =>
+        disease.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm]);
 
   
   const handleSuggestionClick = (suggestion) => {
+    setfilteredDiseases([]);
     setSearchTerm(suggestion);
   };
 

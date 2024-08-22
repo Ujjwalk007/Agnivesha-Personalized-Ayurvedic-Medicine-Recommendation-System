@@ -5,6 +5,7 @@ from xgboost import XGBClassifier
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
+from flask_cors import CORS
 
 with open('Backend/models/Agnivesh.pkl','rb') as file:
     Agnivesh = pickle.load(file)
@@ -26,6 +27,7 @@ for key, encoder in encoders.items():
 
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/',methods=['POST'])
 def GetRemedy():

@@ -1,0 +1,61 @@
+
+
+.centerbox{
+
+        background-color: white;
+        margin-left: 35vh;
+        margin-top: 5vh;
+        border-radius: 5vh;
+
+        height: 70vh;
+        width: 140vh;
+
+}
+
+.title{
+
+    color: #078D6D;
+    text-decoration: underline;
+    margin-top: 4vh;
+    font-size: 5vh;
+    font-weight: bold;
+
+
+}
+
+.lower{
+
+    display: flex;
+    justify-content: flex-start;
+
+    margin-top: 6vh;
+
+}
+
+.patientInfo{
+
+    height: 30vh;
+    width: 35vh;
+
+    
+    margin-left: 8vh;
+    margin-top: 2vh;
+
+    border:#078D6D 0.7vh solid;
+    border-radius: 5vh;
+
+
+}
+
+.remedy{
+
+    color: #078D6D;
+    margin-top: 5vh;
+    margin-left: 20vh;
+
+    width: 50vh;
+    font-weight: bold;
+
+    font-size: 3vh;
+
+}
